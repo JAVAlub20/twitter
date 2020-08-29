@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- JDBC Database connection settings -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://remotemysql.com:3306/CAa498Hcm6</property>
+        <property name="connection.username">CAa498Hcm6</property>
+        <property name="connection.password">VaoCK8xNWd</property>
+        <!-- Select our SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!-- Echo the SQL to stdout -->
+        <property name="show_sql">true</property>
+
+        <mapping class="pl.sda.twitter.persistance.entities.TbUser"/>
+    </session-factory>
+</hibernate-configuration>
