@@ -1,4 +1,8 @@
+<%@ page import="java.util.List" %>
+<%@ page import="pl.sda.twitter.persistance.entities.TbArticle" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="articleService" scope="request" class="pl.sda.twitter.services.ArticleService"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -21,18 +25,22 @@
             <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
         </div>
     </div>
-
-    <div class="container">
-        <!-- Example row of columns -->
-        <div class="row">
-            <div>
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
-                    malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+    <%
+        List<TbArticle> articles = articleService.getArticles();
+        pageContext.setAttribute("articles", articles);
+    %>
+    <c:forEach items="${articles}" var="article">
+        <div class="container">
+            <div class="row">
+                <div>
+                    <h2>Heading</h2>
+                    <p>${article.getContent()}</p>
+                    <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+                </div>
             </div>
         </div>
-    </div> <!-- /container -->
+    </c:forEach>
+
 </main>
 <jsp:include page="include/footer.jsp"/>
 </body>
