@@ -16,6 +16,7 @@
             <div id="login-form" class="container">
                 <form class="form-signin" method="post" action="login">
                     <img class="mb-4" src="https://getbootstrap.com/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+                    <jsp:include page="include/message.jsp"/>
                     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
                     <label for="inputLogin" class="sr-only">Email address</label>
                     <input type="text" id="inputLogin" name="login" class="form-control" placeholder="Login" required autofocus>
@@ -33,5 +34,9 @@
     </div>
 </main>
 <jsp:include page="include/footer.jsp"/>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquerry.js"></script>
+<%--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>--%>
+<%--<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>--%>
 </body>
 </html>
