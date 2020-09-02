@@ -3,7 +3,7 @@
 <%--messages--%>
 <c:choose>
     <c:when test="${sessionScope.message != null}">
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <div class="fixed-top mx-auto mt-5 w-25 alert alert-danger alert-dismissible fade show" role="alert">
                 ${sessionScope.message}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>

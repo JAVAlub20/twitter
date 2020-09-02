@@ -11,12 +11,12 @@
 <body>
 <jsp:include page="include/header.jsp"/>
 <main class="container pb-3 mb-3">
+    <jsp:include page="include/message.jsp"/>
     <div class="row text-center">
         <div class="col-md-4 m-auto">
             <div id="login-form" class="container">
                 <form class="form-signin" method="post" action="login">
                     <img class="mb-4" src="https://getbootstrap.com/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-                    <jsp:include page="include/message.jsp"/>
                     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
                     <label for="inputLogin" class="sr-only">Email address</label>
                     <input type="text" id="inputLogin" name="login" class="form-control" placeholder="Login" required autofocus>
