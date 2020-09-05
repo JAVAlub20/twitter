@@ -31,7 +31,7 @@
                 <div class="container">
                     <h1 class="display-3">Hello world!</h1>
                     <p>{{article.content}}</p>
-                    <p><a class="btn btn-secondary" href="article?id={{article.id}}" role="button">View details &raquo;</a></p>
+                    <p><a class="btn btn-secondary" href="${pageContext.request.contextPath}/article.jsp?id={{article.id}}" role="button">View details &raquo;</a></p>
                 </div>
             </div>
         </div>

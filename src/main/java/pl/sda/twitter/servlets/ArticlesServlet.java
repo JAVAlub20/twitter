@@ -16,23 +16,32 @@ import java.util.List;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
-@WebServlet(urlPatterns = "/rest/articles/")
+@WebServlet(urlPatterns = "/rest/articles/*")
 public class ArticlesServlet extends HttpServlet {
     private ArticleService articleService = new ArticleService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        final List<TbArticle> articles = articleService.getArticles();
-        sendAsJson(articles, resp);
+        final String pathInfo = req.getPathInfo();
+        if (pathInfo == null || pathInfo.equals("/")) {
+            final List<TbArticle> articles = articleService.getArticles();
+            sendAsJson(articles, resp);
+        } else {
+            final int articleId1 = Integer
+                    .parseInt(pathInfo.replace("/", ""));
+            final TbArticle article = articleService
+                    .getArticleById(articleId1);
+            sendAsJson(article, resp);
+        }
     }
 
-    private void sendAsJson(List models, HttpServletResponse response) throws IOException {
+    private void sendAsJson(Object model, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
         response.setCharacterEncoding(UTF_8.name());
         final Gson gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
                 .create();
-        final String jsonString = gson.toJson(models);
+        final String jsonString = gson.toJson(model);
         final PrintWriter writer = response.getWriter();
         writer.print(jsonString);
         writer.flush();

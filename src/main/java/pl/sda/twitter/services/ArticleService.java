@@ -16,4 +16,8 @@ public class ArticleService {
     public List<TbArticle> getArticles() {
         return articleDao.getArticles();
     }
+
+    public TbArticle getArticleById(Integer articleId){
+        return articleDao.getArticleById(articleId);
+    }
 }
