@@ -1,6 +1,7 @@
 package pl.sda.twitter.services;
 
 import pl.sda.twitter.persistance.dao.ArticleDao;
+import pl.sda.twitter.persistance.entities.TbArticle;
 import pl.sda.twitter.persistance.entities.TbUser;
 
 import java.util.List;
@@ -12,7 +13,7 @@ public class ArticleService {
         articleDao.addNewArticle(tbUser, content);
     }
 
-    public List getArticles() {
+    public List<TbArticle> getArticles() {
         return articleDao.getArticles();
     }
 }
