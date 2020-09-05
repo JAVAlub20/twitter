@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,11 +14,12 @@
 <main role="main" ng-app="articleApp">
     <div ng-controller="articleController" ng-init="articleById(<%= request.getParameter("id") %>)">
 
-            <div class="jumbotron">
-                <div class="container">
-                    <p>Użytkownik <b>{{article.user.login}}</b> napisał:</p>
-                    <p>{{article.content}}</p>
-                </div>
+        <div class="jumbotron">
+            <div class="container">
+                <p>Użytkownik <b>{{article.user.login}}</b> napisał:</p>
+                <p>{{article.content}}</p>
+                <p>{{article.isOwner}}</p>
+            </div>
         </div>
     </div>
 </main>
