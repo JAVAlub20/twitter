@@ -18,7 +18,8 @@
             <div class="container">
                 <p>Użytkownik <b>{{article.user.login}}</b> napisał:</p>
                 <p>{{article.content}}</p>
-                <p>{{article.isOwner}}</p>
+
+                <p ng-if="article.isOwner"><a href="remove/article/{{article.id}}">usuń artykuł</a></p>
             </div>
         </div>
     </div>

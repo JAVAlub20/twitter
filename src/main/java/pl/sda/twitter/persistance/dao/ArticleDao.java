@@ -1,6 +1,7 @@
 package pl.sda.twitter.persistance.dao;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import pl.sda.twitter.constants.ArticleStatus;
 import pl.sda.twitter.persistance.HibernateUtil;
@@ -34,7 +35,7 @@ public class ArticleDao {
         }
     }
 
-    public List<TbArticle> getArticles(ArticleStatus status){
+    public List<TbArticle> getArticles(ArticleStatus status) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.beginTransaction();
             final Query q = session.createQuery("select o from "
@@ -54,6 +55,17 @@ public class ArticleDao {
             q.setParameter("id", articleId);
             session.getTransaction().commit();
             return (TbArticle) q.getSingleResult();
+        }
+    }
+
+    public void removeArticleById(Integer articleId) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            final Transaction transaction = session.beginTransaction();
+            final TbArticle tbArticle = session.load(TbArticle.class, articleId);
+            tbArticle.setStatus(ArticleStatus.DELET.name());
+            session.update(tbArticle);
+            transaction.commit();
+            session.close();
         }
     }
 }

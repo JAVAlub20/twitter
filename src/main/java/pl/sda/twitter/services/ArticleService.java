@@ -25,4 +25,8 @@ public class ArticleService {
     public TbArticle getArticleById(Integer articleId){
         return articleDao.getArticleById(articleId);
     }
+
+    public void removeArticleById(Integer id){
+        articleDao.removeArticleById(id);
+    }
 }
