@@ -10,8 +10,8 @@ import java.util.List;
 public class ArticleService {
     private final ArticleDao articleDao = new ArticleDao();
 
-    public void addArticle(TbUser tbUser, String content) {
-        articleDao.addNewArticle(tbUser, content);
+    public void addArticle(TbUser tbUser, String content, ArticleStatus articleStatus) {
+        articleDao.addNewArticle(tbUser, content, articleStatus);
     }
 
     public List<TbArticle> getArticles() {

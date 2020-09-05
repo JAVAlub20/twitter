@@ -1,5 +1,6 @@
 package pl.sda.twitter.servlets;
 
+import pl.sda.twitter.constants.ArticleStatus;
 import pl.sda.twitter.persistance.entities.TbUser;
 import pl.sda.twitter.services.ArticleService;
 
@@ -29,7 +30,7 @@ public class AddArticleServlet extends HttpServlet {
         final String content = req.getParameter("content");
         final HttpSession session = req.getSession();
         final TbUser user = (TbUser) session.getAttribute("user");
-        articleService.addArticle(user, content);
+        articleService.addArticle(user, content, ArticleStatus.VIEW);
         resp.sendRedirect("index.jsp");
     }
 }
