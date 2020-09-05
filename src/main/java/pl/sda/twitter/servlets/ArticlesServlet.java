@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 @WebServlet(urlPatterns = "/rest/articles/")
 public class ArticlesServlet extends HttpServlet {
     private ArticleService articleService = new ArticleService();
@@ -26,6 +28,7 @@ public class ArticlesServlet extends HttpServlet {
 
     private void sendAsJson(List models, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
+        response.setCharacterEncoding(UTF_8.name());
         final Gson gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
                 .create();
