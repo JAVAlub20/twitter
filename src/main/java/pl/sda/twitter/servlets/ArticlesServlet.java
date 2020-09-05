@@ -2,6 +2,7 @@ package pl.sda.twitter.servlets;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import pl.sda.twitter.constants.ArticleStatus;
 import pl.sda.twitter.persistance.entities.TbArticle;
 import pl.sda.twitter.services.ArticleService;
 
@@ -24,7 +25,7 @@ public class ArticlesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         final String pathInfo = req.getPathInfo();
         if (pathInfo == null || pathInfo.equals("/")) {
-            final List<TbArticle> articles = articleService.getArticles();
+            final List<TbArticle> articles = articleService.getArticles(ArticleStatus.VIEW);
             sendAsJson(articles, resp);
         } else {
             final int articleId1 = Integer

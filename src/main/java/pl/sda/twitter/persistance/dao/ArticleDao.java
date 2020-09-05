@@ -2,6 +2,7 @@ package pl.sda.twitter.persistance.dao;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import pl.sda.twitter.constants.ArticleStatus;
 import pl.sda.twitter.persistance.HibernateUtil;
 import pl.sda.twitter.persistance.entities.TbArticle;
 import pl.sda.twitter.persistance.entities.TbUser;
@@ -27,6 +28,18 @@ public class ArticleDao {
             session.beginTransaction();
             final Query q = session.createQuery("select o from "
                     + TbArticle.class.getName() + " o");
+            session.getTransaction().commit();
+            return q.getResultList();
+        }
+    }
+
+    public List<TbArticle> getArticles(ArticleStatus status){
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            session.beginTransaction();
+            final Query q = session.createQuery("select o from "
+                    + TbArticle.class.getName() + " o where o.status =:" +
+                    "articleStatus");
+            q.setParameter("articleStatus", status.name());
             session.getTransaction().commit();
             return q.getResultList();
         }
